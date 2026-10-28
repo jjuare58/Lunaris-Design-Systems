@@ -1,0 +1,431 @@
+/* =============================================
+   Lunaris Design System
+   1. Reset
+   2. Tokens (default "Daylight" theme)
+   3. Alternate theme ("Moonlit")
+   4. Base text styles
+   5. Layout
+   6. Components
+   ============================================= */
+
+
+/* ---------- 1. RESET ---------- */
+
+/* Makes sure padding and borders are included in the element's total width */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Removes the default space the browser adds around the page */
+body {
+  margin: 0;
+}
+
+/* Makes images fit smaller screens without stretching them */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Makes buttons and form inputs use the same font as the page */
+input,
+select,
+button {
+  font: inherit;
+}
+
+
+/* ---------- 2. TOKENS ---------- */
+
+/* Stores the main styles in one place so I can reuse them throughout my CSS */
+:root {
+  /* Colors */
+  --color-bg: #F6F1E7;            /* cream background for the page */
+  --color-surface: #FFFCF6;       /* background for cards and inputs */
+  --color-surface-alt: #EDE5D6;   /* background for code and disabled items */
+  --color-text: #1D1A18;          /* main text color, almost black */
+  --color-text-muted: #5A524B;    /* lighter color for smaller text */
+  --color-border: #857A6D;        /* border color for cards and inputs */
+  --color-action: #9B1C1F;        /* red color for buttons and links */
+  --color-action-hover: #7A1418;  /* darker red when hovering */
+  --color-on-action: #FFFFFF;     /* white text on red buttons */
+  --color-focus: #1D1A18;         /* outline color when using the keyboard */
+
+  /* Spacing */
+  /* Different spacing sizes to keep everything consistent */
+  --space-xs: 0.25rem;  /* 4px */
+  --space-sm: 0.5rem;   /* 8px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 3rem;     /* 48px */
+
+  /* Sizing */
+  --measure: 65ch;           /* keeps paragraphs from getting too wide */
+  --page-width: 70rem;       /* sets the maximum width of the page */
+  --control-height: 2.75rem; /* sets buttons and inputs to at least 44px tall */
+
+  /* Radius */
+  /* Controls how rounded the corners are */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 999px;
+
+  /* Elevation (shadows) */
+  /* Adds shadows to make certain elements stand out */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+  /* Typography */
+  /* Sets the fonts, text sizes, and spacing between lines */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body: "Montserrat", Arial, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-h3: 1.375rem;
+  --text-h2: 1.75rem;
+  --text-h1: 2.25rem;
+  --line-height: 1.6;
+}
+
+
+/* ---------- 3. ALTERNATE THEME: Moonlit ---------- */
+
+/* Changes the colors for the Moonlit theme.
+   Since the rest of my CSS uses these variables,
+   I only need to change the colors here instead of
+   rewriting all the styles again. */
+.theme-moonlit {
+  --color-bg: #141219;
+  --color-surface: #1E1B24;
+  --color-surface-alt: #0E0C12;
+  --color-text: #F3EDE2;
+  --color-text-muted: #B9B0A3;
+  --color-border: #8E8698;
+  --color-action: #F08A7E;        /* lighter coral so buttons show on dark backgrounds */
+  --color-action-hover: #F6A79D;
+  --color-on-action: #1A0B0B;     /* dark text because white didn't have enough contrast */
+  --color-focus: #F2C94C;         /* gold outline to make keyboard focus easier to see */
+}
+
+
+/* ---------- 4. BASE TEXT ---------- */
+
+/* Uses the background and text colors from whichever theme is applied */
+body,
+.theme-moonlit {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Sets the main font, text size, and line spacing for the page */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--line-height);
+}
+
+/* Makes all headings use the same font and line spacing */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Gives each heading level its own size */
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+
+/* Makes headings bigger when the screen is at least 48em wide */
+@media (min-width: 48em) {
+  :root {
+    --text-h1: 3.25rem;
+    --text-h2: 2.25rem;
+    --text-h3: 1.625rem;
+  }
+}
+
+/* Keeps paragraphs and lists from stretching too far across the page */
+p,
+ul,
+ol {
+  max-width: var(--measure);
+}
+
+/* Uses the action color for links */
+a {
+  color: var(--color-action);
+}
+
+/* Makes the underline thicker when hovering over a link */
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Gives code its own font and background so it stands out */
+code {
+  font-family: var(--font-mono);
+  background-color: var(--color-surface-alt);
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;  /* keeps token names together on one line */
+}
+
+/* Makes smaller text a little lighter than the main text */
+.small {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Adds an outline to links, buttons, and inputs when using the Tab key */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 5. LAYOUT ---------- */
+
+/* Keeps the page centered and adds some space on the sides */
+.container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Adds space above each section */
+section {
+  padding-top: var(--space-xl);
+}
+
+/* Places the theme panels in a grid.
+   On smaller screens they stack on top of each other. */
+.theme-row {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Once the screen reaches 48em, the panels sit side by side */
+@media (min-width: 48em) {
+  .theme-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Styles each theme panel with its own background, border, and spacing */
+.panel {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+/* Places buttons next to each other and moves them to a new line if needed */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+
+/* ---------- 6. COMPONENTS ---------- */
+
+/* Buttons */
+
+/* Sets the basic style for all buttons */
+.btn {
+  display: inline-block;
+  min-height: var(--control-height);
+  padding: var(--space-sm) var(--space-lg);
+  border: 2px solid var(--color-action);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Main button uses the theme's action color */
+.btn-primary {
+  background-color: var(--color-action);
+  color: var(--color-on-action);
+}
+
+/* Changes the main button color when hovering over it */
+.btn-primary:hover {
+  background-color: var(--color-action-hover);
+  border-color: var(--color-action-hover);
+}
+
+/* Secondary button has a clear background instead of a filled one */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+/* Adds a light background when hovering over the secondary button */
+.btn-secondary:hover {
+  background-color: var(--color-surface-alt);
+}
+
+/* Moves the button down slightly when clicked */
+.btn:active {
+  transform: translateY(2px);
+}
+
+/* Makes disabled buttons look different and shows they aren't clickable */
+.btn:disabled {
+  background-color: var(--color-surface-alt);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Cards */
+
+/* Gives cards a background, border, rounded corners, and spacing */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+/* Adds a shadow to make the card look raised */
+.card-raised {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+/* Notice / callout */
+
+/* Makes important information stand out with a colored line on the left */
+.callout {
+  background-color: var(--color-surface-alt);
+  border-left: 4px solid var(--color-action);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+}
+
+/* Media placeholder */
+
+/* Creates a placeholder box for images or other media */
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  max-width: 24rem;
+  background-color: var(--color-surface-alt);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+}
+
+/* Form controls */
+
+/* Makes labels and form group titles bold */
+label,
+legend {
+  font-weight: 700;
+}
+
+/* Makes text inputs and dropdowns fill the available width */
+.input,
+.select {
+  display: block;
+  width: 100%;
+  min-height: var(--control-height);
+  margin: var(--space-xs) 0 var(--space-md);
+  padding: var(--space-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+/* Adds a border and spacing around grouped form options */
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin: 0 0 var(--space-md);
+}
+
+/* Places each checkbox or radio option on its own line */
+.choice {
+  display: block;
+  font-weight: 400;
+  margin: var(--space-sm) 0;
+}
+
+/* Sets the size and color of checkboxes and radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--color-action);
+  vertical-align: middle;
+}
+
+/* Token inventory list */
+
+/* Removes the normal list bullets and displays the tokens in a grid */
+.token-list {
+  list-style: none;
+  padding: 0;
+  max-width: none;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+/* Displays the token list in three columns on wider screens */
+@media (min-width: 48em) {
+  .token-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Gives each token its own box with a border and spacing */
+.token-list li {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  font-size: var(--text-sm);
+}
+
+/* Creates small color squares to show the theme colors */
+.swatch {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  vertical-align: middle;
+}
+
+/* Sets the logo size and adds rounded corners and a small shadow */
+.header-logo {
+  width: 6rem;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+}
+
+/* Adds space above the footer and a line to separate it from the page */
+footer {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+}

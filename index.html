@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lunaris Design System Specimen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="container">
+  <img class="header-logo" src="assets/lunaris-logo.jpg" width="480" height="480" alt="Lunaris Collectibles and Memorabilia logo">
+  <h1>Lunaris Design System Specimen</h1>
+  <p>
+    Design system for <strong>Lunaris Collectibles &amp; Memorabilia</strong>, an active duty service member owned shop
+    in Tacoma, WA that makes laser-engraved trading card binders and custom military gifts.
+  </p>
+  <p>
+    <strong>Audience:</strong> Trading card collectors and families, plus service members and
+    veterans shopping for personalized gifts. On Etsy, Facebook, and local pop ups at card shows in Washington state. 
+  </p>
+  <p class="small">GIT 337 · Jess Juarez · Real business, used with the owner's permission.</p>
+</header>
+
+<main class="container">
+
+  <!-- S1 -->
+  <section id="s1">
+    <h2>S1: Foundation and Reset</h2>
+    <p>I kept my reset simple and only changed a few browser defaults that were causing issues:</p>
+    <ul>
+      <li><code>box-sizing: border-box</code> on all elements</li>
+      <li><code>margin: 0</code> on the body</li>
+      <li><code>max-width: 100%</code> on images</li>
+      <li><code>font: inherit</code> on inputs, selects, and buttons</li>
+    </ul>
+    <p><strong>Why border-box:</strong> this keeps the padding and borders within the width I set, so the cards fit better on smaller screens.</p>
+    <p><strong>Why font: inherit:</strong> some browsers use a different font for buttons and inputs. This makes them match the rest of my page.</p>
+    <p><strong>What I kept:</strong> I left the focus outlines, bullet points, and normal heading and paragraph spacing because they make the page easier to read and use.</p>
+  </section>
+
+  <!-- S2 -->
+  <section id="s2">
+    <h2>S2: Token Inventory</h2>
+    <p>
+      I named my tokens by <strong>category</strong> and then what they are used for, like
+      <code>--color-action</code> or <code>--space-md</code>. I used these tokens in my components instead of typing the values each time,
+      so I only have to change them in one place for the Moonlit theme.
+    </p>
+
+    <h3>Color (Daylight / Moonlit)</h3>
+    <ul class="token-list">
+      <li><span class="swatch" style="background: #F6F1E7"></span> <span class="swatch" style="background: #141219"></span><br><code>--color-bg</code><br>#F6F1E7 / #141219<br>Page background</li>
+      <li><span class="swatch" style="background: #FFFCF6"></span> <span class="swatch" style="background: #1E1B24"></span><br><code>--color-surface</code><br>#FFFCF6 / #1E1B24<br>Cards and inputs</li>
+      <li><span class="swatch" style="background: #EDE5D6"></span> <span class="swatch" style="background: #0E0C12"></span><br><code>--color-surface-alt</code><br>#EDE5D6 / #0E0C12<br>Code, placeholders, disabled</li>
+      <li><span class="swatch" style="background: #1D1A18"></span> <span class="swatch" style="background: #F3EDE2"></span><br><code>--color-text</code><br>#1D1A18 / #F3EDE2<br>Main text</li>
+      <li><span class="swatch" style="background: #5A524B"></span> <span class="swatch" style="background: #B9B0A3"></span><br><code>--color-text-muted</code><br>#5A524B / #B9B0A3<br>Small or secondary text</li>
+      <li><span class="swatch" style="background: #857A6D"></span> <span class="swatch" style="background: #8E8698"></span><br><code>--color-border</code><br>#857A6D / #8E8698<br>Card and input borders</li>
+      <li><span class="swatch" style="background: #9B1C1F"></span> <span class="swatch" style="background: #F08A7E"></span><br><code>--color-action</code><br>#9B1C1F / #F08A7E<br>Buttons and links</li>
+      <li><span class="swatch" style="background: #7A1418"></span> <span class="swatch" style="background: #F6A79D"></span><br><code>--color-action-hover</code><br>#7A1418 / #F6A79D<br>Button hover</li>
+      <li><span class="swatch" style="background: #FFFFFF"></span> <span class="swatch" style="background: #1A0B0B"></span><br><code>--color-on-action</code><br>#FFFFFF / #1A0B0B<br>Text on buttons</li>
+      <li><span class="swatch" style="background: #1D1A18"></span> <span class="swatch" style="background: #F2C94C"></span><br><code>--color-focus</code><br>#1D1A18 / #F2C94C<br>Keyboard focus outline</li>
+    </ul>
+
+    <h3>Spacing</h3>
+    <ul class="token-list">
+      <li><code>--space-xs</code><br>0.25rem (4px)<br>Tiny gaps</li>
+      <li><code>--space-sm</code><br>0.5rem (8px)<br>Between buttons, input padding</li>
+      <li><code>--space-md</code><br>1rem (16px)<br>Default gap, page edges</li>
+      <li><code>--space-lg</code><br>1.5rem (24px)<br>Card padding</li>
+      <li><code>--space-xl</code><br>3rem (48px)<br>Between sections</li>
+    </ul>
+
+    <h3>Sizing</h3>
+    <ul class="token-list">
+      <li><code>--measure</code><br>65ch<br>Max line length for text</li>
+      <li><code>--page-width</code><br>70rem<br>Max page width</li>
+      <li><code>--control-height</code><br>2.75rem (44px)<br>Buttons and inputs, easy to tap</li>
+    </ul>
+
+    <h3>Radius</h3>
+    <ul class="token-list">
+      <li><code>--radius-sm</code><br>4px<br>Inputs, code, callouts</li>
+      <li><code>--radius-md</code><br>8px<br>Cards, panels</li>
+      <li><code>--radius-pill</code><br>999px<br>Buttons (matches the logo's arch)</li>
+    </ul>
+
+    <h3>Elevation</h3>
+    <ul class="token-list">
+      <li><code>--shadow-sm</code><br>0 1px 3px<br>Logo</li>
+      <li><code>--shadow-md</code><br>0 4px 12px<br>Featured (raised) card</li>
+    </ul>
+
+    <h3>Typography</h3>
+    <ul class="token-list">
+      <li><code>--font-display</code><br>DM Serif Display, Georgia, serif<br>Headings</li>
+      <li><code>--font-body</code><br>Montserrat, Arial, sans-serif<br>Body text, buttons, forms</li>
+      <li><code>--font-mono</code><br>Consolas, Courier New, monospace<br>Code</li>
+      <li><code>--text-sm / --text-base</code><br>0.875rem / 1rem<br>Small text / body text</li>
+      <li><code>--text-h1 / h2 / h3</code><br>2.25 / 1.75 / 1.375rem on phones<br>3.25 / 2.25 / 1.625rem on wider screens</li>
+      <li><code>--line-height</code><br>1.6<br>Body text</li>
+    </ul>
+  </section>
+
+  <!-- S3 -->
+  <section id="s3">
+    <h2>S3: Typography</h2>
+
+    <div class="card">
+      <p class="small">Sample page content</p>
+      <h2>Custom Card Binders</h2>
+      <p class="small">Posted October 2026 · Lunaris Shop Notes</p>
+      <h3>Made to order in Tacoma</h3>
+      <p>Every binder is laser engraved after you order. Pick a set design or send your own artwork.</p>
+      <h4>What you can customize</h4>
+      <ul>
+        <li>Cover design</li>
+        <li>A name, unit, or rank</li>
+        <li>Binder color</li>
+      </ul>
+      <p>See the <a href="https://www.etsy.com/shop/LunarisMemorabilia">Lunaris Etsy shop</a>. Card padding uses <code>var(--space-lg)</code>.</p>
+    </div>
+
+    <h3>Font documentation</h3>
+    <ul>
+      <li><strong>Display (headings):</strong> DM Serif Display, Georgia, serif. I picked this because it looks similar to the LUNARIS lettering in the logo.</li>
+      <li><strong>Body:</strong> Montserrat, Arial, sans-serif. I picked this to match the COLLECTIBLES lettering in the logo.</li>
+      <li><strong>Source and license:</strong> I got these from Google Fonts. They use the SIL Open Font License, so they are free to use. I loaded DM Serif Display 400 and Montserrat 400 and 700.</li>
+      <li><strong>Responsive sizing:</strong> I used a media query to make the headings bigger when the screen is 48em (768px) or wider.</li>
+      <li><strong>Line length:</strong> I limited paragraphs to 65ch so the lines do not stretch too far across the page.</li>
+      <li><strong>Fallback plan:</strong> I used <code>display=swap</code> so the text still shows while the fonts load. If Google Fonts does not load, the headings use Georgia and the body text uses Arial.</li>
+    </ul>
+  </section>
+
+  <!-- S4 -->
+  <section id="s4">
+    <h2>S4: Actions and States</h2>
+    <p>You can hover over the buttons, press Tab to see the outline, or click to see how they change. Disabled buttons do not work. I used primary buttons for the main actions and secondary buttons for other options.</p>
+
+    <div class="theme-row">
+      <div class="panel">
+        <h3>Daylight (default)</h3>
+        <p>Read the <a href="#s3">engraving guide</a> first.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#s6">Start an order</a>
+          <a class="btn btn-secondary" href="#s5">Browse binders</a>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-primary" type="button" disabled>Sold out</button>
+          <button class="btn btn-secondary" type="button" disabled>Unavailable</button>
+        </div>
+      </div>
+
+      <div class="panel theme-moonlit">
+        <h3>Moonlit (alternate)</h3>
+        <p>Read the <a href="#s3">engraving guide</a> first.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#s6">Start an order</a>
+          <a class="btn btn-secondary" href="#s5">Browse binders</a>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-primary" type="button" disabled>Sold out</button>
+          <button class="btn btn-secondary" type="button" disabled>Unavailable</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 -->
+  <section id="s5">
+    <h2>S5: Surfaces and Content</h2>
+    <p><strong>Card:</strong> shows product listings. <strong>Raised card:</strong> makes a featured item stand out. <strong>Callout:</strong> shows important notices. <strong>Media placeholder:</strong> saves a spot for a product photo.</p>
+
+    <div class="theme-row">
+      <div class="panel">
+        <h3>Daylight (default)</h3>
+        <div class="card">
+          <div class="media">Product photo</div>
+          <h3>540-Card Zip Binder</h3>
+          <p class="small">Laser engraved · Ships in 3–5 days</p>
+        </div>
+        <div class="card card-raised">
+          <h3>Engraved Pocket Tin</h3>
+          <p>Personalized with rank, unit, or a name.</p>
+        </div>
+        <div class="callout">
+          <p><strong>Holiday deadline:</strong> order by December 10 for delivery before the holidays.</p>
+        </div>
+      </div>
+
+      <div class="panel theme-moonlit">
+        <h3>Moonlit (alternate)</h3>
+        <div class="card">
+          <div class="media">Product photo</div>
+          <h3>540-Card Zip Binder</h3>
+          <p class="small">Laser engraved · Ships in 3–5 days</p>
+        </div>
+        <div class="card card-raised">
+          <h3>Engraved Pocket Tin</h3>
+          <p>Personalized with rank, unit, or a name.</p>
+        </div>
+        <div class="callout">
+          <p><strong>Holiday deadline:</strong> order by December 10 for delivery before the holidays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 -->
+  <section id="s6">
+    <h2>S6: Form Controls</h2>
+    <p>I added labels to each form control and used <code>accent-color</code> so the checkboxes and radio buttons match the theme.</p>
+
+    <div class="theme-row">
+      <form class="panel" action="#">
+        <h3>Daylight (default)</h3>
+        <label for="name-day">Name to engrave</label>
+        <input class="input" id="name-day" type="text">
+
+        <label for="product-day">Product</label>
+        <select class="select" id="product-day">
+          <option>Card binder</option>
+          <option>Pocket tin</option>
+        </select>
+
+        <fieldset>
+          <legend>Color</legend>
+          <label class="choice"><input type="radio" name="color-day" checked> Black</label>
+          <label class="choice"><input type="radio" name="color-day"> Red</label>
+        </fieldset>
+
+        <label class="choice"><input type="checkbox"> This is a gift</label>
+        <button class="btn btn-primary" type="button">Request quote</button>
+      </form>
+
+      <form class="panel theme-moonlit" action="#">
+        <h3>Moonlit (alternate)</h3>
+        <label for="name-moon">Name to engrave</label>
+        <input class="input" id="name-moon" type="text">
+
+        <label for="product-moon">Product</label>
+        <select class="select" id="product-moon">
+          <option>Card binder</option>
+          <option>Pocket tin</option>
+        </select>
+
+        <fieldset>
+          <legend>Color</legend>
+          <label class="choice"><input type="radio" name="color-moon" checked> Black</label>
+          <label class="choice"><input type="radio" name="color-moon"> Red</label>
+        </fieldset>
+
+        <label class="choice"><input type="checkbox"> This is a gift</label>
+        <button class="btn btn-primary" type="button">Request quote</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Theme + accessibility notes -->
+  <section id="notes">
+    <h2>Theme and Accessibility Notes</h2>
+    <p><strong>How the theme works:</strong> I used one CSS rule called <code>.theme-moonlit</code> to change the colors. When I add this class to a box, it uses the Moonlit colors. I did not need to write separate button, card, or form styles for each theme.</p>
+    <p><strong>Contrast:</strong> the original logo red was hard to see against the dark background, so I used a lighter coral and dark button text for Moonlit. The text meets WCAG AA contrast requirements (4.5:1). I also used a black focus outline for Daylight and a gold one for Moonlit to make them easier to see.</p>
+  </section>
+
+</main>
+
+<footer class="container">
+  <p class="small">Lunaris Collectibles &amp; Memorabilia · GIT 337 design system specimen</p>
+</footer>
+
+</body>
+</html>
