@@ -6,8 +6,8 @@ Design system for **Lunaris Collectibles & Memorabilia**, an active duty service
 
 ## Links
 
-- **Repository:** 
-- **Published page:** 
+- **Repository:** https://github.com/jjuare58/Lunaris-Design-Systems
+- **Published page:** https://jjuare58.github.io/Lunaris-Design-Systems/
 
 ## Files
 
@@ -61,8 +61,8 @@ Design system for **Lunaris Collectibles & Memorabilia**, an active duty service
 ### 7. Publication (private browser window)
 
 - **Expected:** The published page should load correctly, including the styles, fonts, logo, and links.
-- **Observed:** 
-- **Revision:** 
+- **Observed:** Published correctly with all content. 
+- **Revision:** none
 
 **Evidence-based revision:** During my responsive testing at 320px, I noticed that token names like `--space-md` were splitting in half. I tried using `overflow-wrap: break-word` first, but it didn't fix the problem. I changed it to `white-space: nowrap`, which kept the token names together. I tested the page again to make sure the text displayed correctly.
 
