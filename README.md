@@ -78,4 +78,4 @@ Design system for **Lunaris Collectibles & Memorabilia**, an active duty service
 
 ## AI Disclosure
 
-I used Chat GPT to help find repeated values, suggest token names, compare different CSS options, and better understand how the code works. AI made suggestions for revision and I reviewed them and made changes based off my design.
+I used Chat GPT to help find repeated values, suggest token names, compare different CSS options, and better understand how the code works. AI made suggestions for revision and I reviewed them and made changes based off my design. Some suggestions AI made were comparing overflow-wrap: break-word and white-space: nowrap. I checked MDN and learned that break-word only adds break points, while hyphens already create break points, so it couldn’t stop --space-md from splitting. nowrap prevents line breaks inside the text. I reproduced both options at 320px and confirmed nowrap fixed the split without causing sideways scrolling.
